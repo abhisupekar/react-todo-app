@@ -9,7 +9,7 @@ const initialState = {
     }
   ]
 };
-export const todoReducer = (state, { type, payload }) => {
+export const todoReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ActionTypes.SET_TASKS:
       return state;
