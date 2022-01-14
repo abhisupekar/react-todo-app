@@ -5,9 +5,9 @@ import React, { lazy, Suspense } from "react";
 import { useDispatch } from "react-redux";
 import { setTasks, addTask } from "./redux/actions/todoActions";
 import { useSelector } from "react-redux";
-import Task from "./Task";
 
 export default function App() {
+  const Task = React.lazy(() => import("./Task"));
   const count = useSelector((state) => state.allTasks.tasks.length);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function App() {
             <div className="col col-xl-10">
               <div className="card" style={{ borderRadius: "15px" }}>
                 <div className="card-body p-5">
-                  <h6 className="mb-3">Awesome Todo List</h6>
+                  <h6 className="mb-3">Todo List</h6>
 
                   <form
                     onSubmit={handleSubmit}
@@ -55,10 +55,8 @@ export default function App() {
                         type="text"
                         id="form3"
                         className="form-control form-control-lg"
+                        placeholder="Enter Task Here"
                       />
-                      <label className="form-label" for="form3">
-                        What do you need to do today?
-                      </label>
                     </div>
                     <button
                       type="submit"
@@ -67,8 +65,9 @@ export default function App() {
                       Add
                     </button>
                   </form>
-
-                  <Task />
+                  <Suspense fallback={<h1>Loading ...</h1>}>
+                    <Task />
+                  </Suspense>
                 </div>
               </div>
             </div>
