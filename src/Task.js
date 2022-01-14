@@ -42,28 +42,28 @@ const Task = () => {
 
   return (
     <div>
-      <ul className="list-group mb-0">
-        <div className="inputAll pl-4">
-          <input
-            className="form-check-input me-2 main-checkbox mt-2"
-            type="checkbox"
-            aria-label="..."
-            ref={parentBoxRef}
-            onChange={checkAllCheckboxes}
-          />
-          <button
-            type="button"
-            className="btn btn-danger ml-2"
-            onClick={handleDelete}
-          >
-            Delete
-          </button>
-        </div>
-        <div className="border-top my-3"></div>
+      <div className="inputAll pl-4">
+        <input
+          className="form-check-input me-2 main-checkbox mt-2"
+          type="checkbox"
+          aria-label="..."
+          ref={parentBoxRef}
+          onChange={checkAllCheckboxes}
+        />
+        <button
+          type="button"
+          className="btn btn-danger ml-2"
+          onClick={handleDelete}
+        >
+          Delete
+        </button>
+      </div>
+      <div className="border-top my-3"></div>
+      <ul className="list-group mb-0 ul-scroll">
         {tasks.map((task, index) => (
           <li
             key={index}
-            className="pl-4 list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded-0 mb-2"
+            className="pl-4 list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded-0 mb-2 custom-li"
           >
             <div className="d-flex align-items-center">
               <input

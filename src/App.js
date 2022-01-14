@@ -60,7 +60,7 @@ export default function App() {
                     </div>
                     <button
                       type="submit"
-                      className="btn btn-primary btn-lg mb-4 ml-2"
+                      className="btn btn-primary btn-lg ml-2"
                     >
                       Add
                     </button>
