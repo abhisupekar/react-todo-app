@@ -1,20 +1,24 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import "./styles.css";
 import React, { lazy, Suspense } from "react";
+import { useDispatch } from "react-redux";
+import { setTasks, addTask } from "./redux/actions/todoActions";
+import { useSelector } from "react-redux";
+import Task from "./Task";
 
 export default function App() {
-  const Task = lazy(() => import("./Task"));
-  const [tasks, setTask] = useState(null);
-  const [count, setCount] = useState(0);
+  const count = useSelector((state) => state.allTasks.tasks.length);
+  const dispatch = useDispatch();
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data: response } = await axios.get(
           "https://jsonplaceholder.typicode.com/todos"
         );
-        setCount(response.length);
-        setTask(response);
+        dispatch(
+          setTasks(response.map((obj) => ({ ...obj, isChecked: false })))
+        );
       } catch (error) {
         console.error(error.message);
       }
@@ -27,9 +31,9 @@ export default function App() {
     const obj = {
       id: count + 1,
       title: e.currentTarget.elements.form3.value,
-      completed: false
+      completed: false,
     };
-    setTask([...tasks, obj]);
+    dispatch(addTask(obj));
   }
 
   return (
@@ -58,18 +62,13 @@ export default function App() {
                     </div>
                     <button
                       type="submit"
-                      className="btn btn-primary btn-lg ms-2"
+                      className="btn btn-primary btn-lg mb-4 ml-2"
                     >
                       Add
                     </button>
                   </form>
-                  {tasks ? (
-                    <Suspense fallback={<h3>Loading....</h3>}>
-                      <Task tasks={tasks} />
-                    </Suspense>
-                  ) : (
-                    ""
-                  )}
+
+                  <Task />
                 </div>
               </div>
             </div>
