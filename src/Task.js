@@ -44,7 +44,7 @@ const Task = () => {
   return (
     <div>
       <ul className="list-group mb-0">
-        <div className="inputAll mb-2">
+        <div className="inputAll pl-4">
           <input
             className="form-check-input me-2 main-checkbox mt-2"
             type="checkbox"
@@ -54,7 +54,7 @@ const Task = () => {
           />
           <button
             type="button"
-            className="btn btn-danger"
+            className="btn btn-danger ml-2"
             onClick={handleDelete}
           >
             Delete
