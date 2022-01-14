@@ -12,7 +12,6 @@ const Task = () => {
   const dispatch = useDispatch();
   const parentBoxRef = useRef();
   const childBoxRef = useRef();
-  const deleteIcon = useRef();
 
   function handleDelete(e) {
     if (parentBoxRef.current.checked && !e.target.className == "fa fa-times") {

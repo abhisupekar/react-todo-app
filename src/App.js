@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import axios from "axios";
 import "./styles.css";
-import React, { lazy, Suspense } from "react";
+import React, { Suspense } from "react";
 import { useDispatch } from "react-redux";
 import { setTasks, addTask } from "./redux/actions/todoActions";
 import { useSelector } from "react-redux";
